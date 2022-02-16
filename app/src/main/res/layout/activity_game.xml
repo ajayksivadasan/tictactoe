@@ -5,13 +5,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="ButtonStyle,NestedWeights,UnusedAttribute">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:drawableTint="@color/white"
             android:weightSum="3">
 
             <Button
@@ -21,16 +21,17 @@
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
                 android:layout_weight="1"
-                tools:ignore="NestedWeights" />
+                android:drawableTint="@color/white" />
 
             <Button
-
                 android:id="@+id/bt_a2"
+
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:drawableTint="@color/white" />
 
             <Button
                 android:id="@+id/bt_a3"
@@ -38,7 +39,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:drawableTint="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -48,22 +50,23 @@
             android:weightSum="3">
 
             <Button
-
                 android:id="@+id/bt_b1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:drawableTint="@color/white" />
 
             <Button
-
                 android:id="@+id/bt_b2"
+
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:drawableTint="@color/white" />
 
             <Button
                 android:id="@+id/bt_b3"
@@ -71,7 +74,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:drawableTint="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -86,7 +90,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:drawableTint="@color/white" />
 
             <Button
                 android:id="@+id/bt_c2"
@@ -94,7 +99,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:drawableTint="@color/white" />
 
             <Button
                 android:id="@+id/bt_c3"
@@ -102,7 +108,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_5dp"
                 android:layout_marginEnd="@dimen/margin_5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:drawableTint="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -117,6 +124,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/str_reset" />
+
             <Button
                 android:id="@+id/btGoBack"
                 android:layout_width="0dp"

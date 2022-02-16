@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Ajay Test Apps/TicTactoe/app/src/main/res/drawable/ic_baseline_circle_24.xml" value="0.1" />
+        <entry key="..\:/Ajay Test Apps/TicTactoe/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1" />
         <entry key="..\:/Ajay Test Apps/TicTactoe/app/src/main/res/layout/activity_game.xml" value="0.25" />
         <entry key="..\:/Ajay Test Apps/TicTactoe/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
       </map>
