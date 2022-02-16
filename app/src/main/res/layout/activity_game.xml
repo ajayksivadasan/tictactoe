@@ -122,6 +122,7 @@
                 android:id="@+id/btReset"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/app_margin"
                 android:layout_weight="1"
                 android:text="@string/str_reset" />
 
@@ -129,6 +130,7 @@
                 android:id="@+id/btGoBack"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/app_margin"
                 android:layout_weight="1"
                 android:text="@string/str_go_back" />
 

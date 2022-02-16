@@ -1,6 +1,7 @@
 package com.example.tictactoe.ui.game;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import com.example.tictactoe.R;
 import com.example.tictactoe.databinding.ActivityGameBinding;
 import com.example.tictactoe.ui.game.model.Cells;
 import com.example.tictactoe.ui.game.model.Player;
+import com.example.tictactoe.ui.main.MainActivity;
 import com.example.tictactoe.utils.Common;
 
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import java.util.List;
 public class GameActivity extends AppCompatActivity {
     ActivityGameBinding gameBinding;
     boolean player1 = true;
-    Context activity;
+    Context context;
     Cells[][] cells = new Cells[3][3];
     int currentRow, currentCol;
     List<RawColumn> rawColumnList = new ArrayList<>();
@@ -29,12 +31,30 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = this;
-        commonClass = new Common(activity);
+        context = this;
+        commonClass = new Common(context);
         gameBinding = DataBindingUtil.setContentView(this, R.layout.activity_game);
         selectColumn();
         clearCells();
         setOnClickListeners();
+        gameBinding.btGoBack.setOnClickListener(v -> {
+            finish();
+            startActivity(new Intent(context, MainActivity.class));
+        });
+        gameBinding.btReset.setOnClickListener(v -> {
+            gameBinding.btA1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+            gameBinding.btA2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+            gameBinding.btA3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+            gameBinding.btB1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+            gameBinding.btB2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+            gameBinding.btB3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+            gameBinding.btC1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+            gameBinding.btC2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+            gameBinding.btC3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+            rawColumnList.clear();
+            clearCells();
+        });
+
     }
 
     private int isGameFinished() {
@@ -104,10 +124,10 @@ public class GameActivity extends AppCompatActivity {
                 currentRow = 0;
                 if (player1) {
                     cells[0][0].setPlayer(Player.X);
-                    gameBinding.btA1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_close_24), null, null);
+                    gameBinding.btA1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_close_24), null, null);
                 } else {
                     cells[0][0].setPlayer(Player.O);
-                    gameBinding.btA1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_circle_24), null, null);
+                    gameBinding.btA1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_circle_24), null, null);
                 }
                 rawColumnList.add(new RawColumn("a", 1, selectColumn()));
                 showGameFinished(isGameFinished());
@@ -119,10 +139,10 @@ public class GameActivity extends AppCompatActivity {
                 currentRow = 0;
                 if (player1) {
                     cells[0][1].setPlayer(Player.X);
-                    gameBinding.btA2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_close_24), null, null);
+                    gameBinding.btA2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_close_24), null, null);
                 } else {
                     cells[0][1].setPlayer(Player.O);
-                    gameBinding.btA2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_circle_24), null, null);
+                    gameBinding.btA2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_circle_24), null, null);
                 }
                 rawColumnList.add(new RawColumn("a", 2, selectColumn()));
                 showGameFinished(isGameFinished());
@@ -134,10 +154,10 @@ public class GameActivity extends AppCompatActivity {
                 currentRow = 0;
                 if (player1) {
                     cells[0][2].setPlayer(Player.X);
-                    gameBinding.btA3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_close_24), null, null);
+                    gameBinding.btA3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_close_24), null, null);
                 } else {
                     cells[0][2].setPlayer(Player.O);
-                    gameBinding.btA3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_circle_24), null, null);
+                    gameBinding.btA3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_circle_24), null, null);
                 }
                 rawColumnList.add(new RawColumn("a", 3, selectColumn()));
                 showGameFinished(isGameFinished());
@@ -149,10 +169,10 @@ public class GameActivity extends AppCompatActivity {
                 currentRow = 1;
                 if (player1) {
                     cells[1][0].setPlayer(Player.X);
-                    gameBinding.btB1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_close_24), null, null);
+                    gameBinding.btB1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_close_24), null, null);
                 } else {
                     cells[1][0].setPlayer(Player.O);
-                    gameBinding.btB1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_circle_24), null, null);
+                    gameBinding.btB1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_circle_24), null, null);
                 }
                 rawColumnList.add(new RawColumn("b", 1, selectColumn()));
                 showGameFinished(isGameFinished());
@@ -164,10 +184,10 @@ public class GameActivity extends AppCompatActivity {
                 currentRow = 1;
                 if (player1) {
                     cells[1][1].setPlayer(Player.X);
-                    gameBinding.btB2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_close_24), null, null);
+                    gameBinding.btB2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_close_24), null, null);
                 } else {
                     cells[1][1].setPlayer(Player.O);
-                    gameBinding.btB2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_circle_24), null, null);
+                    gameBinding.btB2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_circle_24), null, null);
                 }
                 rawColumnList.add(new RawColumn("b", 2, selectColumn()));
                 showGameFinished(isGameFinished());
@@ -179,10 +199,10 @@ public class GameActivity extends AppCompatActivity {
                 currentRow = 1;
                 if (player1) {
                     cells[1][2].setPlayer(Player.X);
-                    gameBinding.btB3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_close_24), null, null);
+                    gameBinding.btB3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_close_24), null, null);
                 } else {
                     cells[1][2].setPlayer(Player.O);
-                    gameBinding.btB3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_circle_24), null, null);
+                    gameBinding.btB3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_circle_24), null, null);
                 }
                 rawColumnList.add(new RawColumn("b", 3, selectColumn()));
                 showGameFinished(isGameFinished());
@@ -194,10 +214,10 @@ public class GameActivity extends AppCompatActivity {
                 currentRow = 2;
                 if (player1) {
                     cells[2][0].setPlayer(Player.X);
-                    gameBinding.btC1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_close_24), null, null);
+                    gameBinding.btC1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_close_24), null, null);
                 } else {
                     cells[2][0].setPlayer(Player.O);
-                    gameBinding.btC1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_circle_24), null, null);
+                    gameBinding.btC1.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_circle_24), null, null);
                 }
                 rawColumnList.add(new RawColumn("c", 1, selectColumn()));
                 showGameFinished(isGameFinished());
@@ -209,10 +229,10 @@ public class GameActivity extends AppCompatActivity {
                 currentRow = 2;
                 if (player1) {
                     cells[2][1].setPlayer(Player.X);
-                    gameBinding.btC2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_close_24), null, null);
+                    gameBinding.btC2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_close_24), null, null);
                 } else {
                     cells[2][1].setPlayer(Player.O);
-                    gameBinding.btC2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_circle_24), null, null);
+                    gameBinding.btC2.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_circle_24), null, null);
                 }
                 rawColumnList.add(new RawColumn("c", 2, selectColumn()));
                 showGameFinished(isGameFinished());
@@ -225,10 +245,10 @@ public class GameActivity extends AppCompatActivity {
                 currentRow = 2;
                 if (player1) {
                     cells[2][2].setPlayer(Player.X);
-                    gameBinding.btC3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_close_24), null, null);
+                    gameBinding.btC3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_close_24), null, null);
                 } else {
                     cells[2][2].setPlayer(Player.O);
-                    gameBinding.btC3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(activity, R.drawable.ic_baseline_circle_24), null, null);
+                    gameBinding.btC3.setCompoundDrawablesWithIntrinsicBounds(null, ContextCompat.getDrawable(context, R.drawable.ic_baseline_circle_24), null, null);
                 }
                 rawColumnList.add(new RawColumn("c", 3, selectColumn()));
                 showGameFinished(isGameFinished());
