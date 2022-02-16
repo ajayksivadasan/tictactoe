@@ -99,7 +99,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void setOnClickListeners() {
         gameBinding.btA1.setOnClickListener(v -> {
-            if (!checkAlreadyInserted("a", 1)) {
+            if (!checkAlreadyInserted("a", 1) && isGameFinished() == 0) {
                 currentCol = 0;
                 currentRow = 0;
                 if (player1) {
@@ -114,7 +114,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
         gameBinding.btA2.setOnClickListener(v -> {
-            if (!checkAlreadyInserted("a", 2)) {
+            if (!checkAlreadyInserted("a", 2) && isGameFinished() == 0) {
                 currentCol = 1;
                 currentRow = 0;
                 if (player1) {
@@ -129,7 +129,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
         gameBinding.btA3.setOnClickListener(v -> {
-            if (!checkAlreadyInserted("a", 3)) {
+            if (!checkAlreadyInserted("a", 3) && isGameFinished() == 0) {
                 currentCol = 2;
                 currentRow = 0;
                 if (player1) {
@@ -144,7 +144,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
         gameBinding.btB1.setOnClickListener(v -> {
-            if (!checkAlreadyInserted("b", 1)) {
+            if (!checkAlreadyInserted("b", 1) && isGameFinished() == 0) {
                 currentCol = 0;
                 currentRow = 1;
                 if (player1) {
@@ -159,7 +159,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
         gameBinding.btB2.setOnClickListener(v -> {
-            if (!checkAlreadyInserted("b", 2)) {
+            if (!checkAlreadyInserted("b", 2) && isGameFinished() == 0) {
                 currentCol = 1;
                 currentRow = 1;
                 if (player1) {
@@ -174,7 +174,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
         gameBinding.btB3.setOnClickListener(v -> {
-            if (!checkAlreadyInserted("b", 3)) {
+            if (!checkAlreadyInserted("b", 3) && isGameFinished() == 0) {
                 currentCol = 2;
                 currentRow = 1;
                 if (player1) {
@@ -189,7 +189,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
         gameBinding.btC1.setOnClickListener(v -> {
-            if (!checkAlreadyInserted("c", 1)) {
+            if (!checkAlreadyInserted("c", 1) && isGameFinished() == 0) {
                 currentCol = 0;
                 currentRow = 2;
                 if (player1) {
@@ -204,7 +204,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
         gameBinding.btC2.setOnClickListener(v -> {
-            if (!checkAlreadyInserted("c", 2)) {
+            if (!checkAlreadyInserted("c", 2) && isGameFinished() == 0) {
                 currentCol = 1;
                 currentRow = 2;
                 if (player1) {
@@ -220,7 +220,7 @@ public class GameActivity extends AppCompatActivity {
 
         });
         gameBinding.btC3.setOnClickListener(v -> {
-            if (!checkAlreadyInserted("c", 3)) {
+            if (!checkAlreadyInserted("c", 3) && isGameFinished() == 0) {
                 currentCol = 2;
                 currentRow = 2;
                 if (player1) {
