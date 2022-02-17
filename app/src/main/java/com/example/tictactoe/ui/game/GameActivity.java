@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
@@ -19,42 +20,58 @@ import com.example.tictactoe.utils.Common;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class GameActivity extends AppCompatActivity {
     ActivityGameBinding gameBinding;
+    @Inject
+    Common commonClass;
+
     boolean player1 = true;
     Context context;
     Cells[][] cells = new Cells[3][3];
-    int currentRow, currentCol;
+    int currentRow;
+    int currentCol;
     List<RawColumn> rawColumnList = new ArrayList<>();
-    Common commonClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         context = this;
-        commonClass = new Common(context);
+        super.onCreate(savedInstanceState);
         gameBinding = DataBindingUtil.setContentView(this, R.layout.activity_game);
         selectColumn();
         clearCells();
         setOnClickListeners();
         gameBinding.btGoBack.setOnClickListener(v -> {
-            finish();
-            startActivity(new Intent(context, MainActivity.class));
+            onBackPressed();
         });
         gameBinding.btReset.setOnClickListener(v -> {
-            gameBinding.btA1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-            gameBinding.btA2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-            gameBinding.btA3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-            gameBinding.btB1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-            gameBinding.btB2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-            gameBinding.btB3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-            gameBinding.btC1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-            gameBinding.btC2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-            gameBinding.btC3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-            rawColumnList.clear();
-            clearCells();
+            resetGame();
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(context, MainActivity.class));
+    }
+
+    private void resetGame() {
+        gameBinding.btA1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        gameBinding.btA2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        gameBinding.btA3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        gameBinding.btB1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        gameBinding.btB2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        gameBinding.btB3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        gameBinding.btC1.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        gameBinding.btC2.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        gameBinding.btC3.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        rawColumnList.clear();
+        clearCells();
     }
 
     private int isGameFinished() {
@@ -259,10 +276,11 @@ public class GameActivity extends AppCompatActivity {
     private void showGameFinished(int gameFinished) {
         switch (gameFinished) {
             case 1:
-                commonClass.getToast("Player1 Wins");
+                commonClass.getToast("Player 1 Wins");
+                showAlertDialog(1);
                 break;
             case 2:
-                commonClass.getToast("Player2 Wins");
+                commonClass.getToast("Player 2 Wins");
                 break;
             case 4:
                 commonClass.getToast("Draw");
@@ -270,6 +288,22 @@ public class GameActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    private void showAlertDialog(int playerNo) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Game Finished");
+        builder.setMessage("Player " + playerNo + " Wins\n Do you want to Replay?");
+        builder.setPositiveButton("yes", (dialog, which) -> {
+            dialog.dismiss();
+            resetGame();
+        });
+        builder.setNegativeButton("No Go Back", (dialog, which) -> {
+            dialog.dismiss();
+            onBackPressed();
+        });
+        builder.setCancelable(false);
+        builder.show();
     }
 
     private void clearCells() {
