@@ -281,6 +281,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case 2:
                 commonClass.getToast("Player 2 Wins");
+                showAlertDialog(2);
                 break;
             case 4:
                 commonClass.getToast("Draw");
